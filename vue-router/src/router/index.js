@@ -20,7 +20,7 @@ const router = createRouter({
             name: 'chats'
         },
         {
-            path: '/course/:courseId',
+            path: '/course/:course',
             component: import('../views/courses/CourseIndexView.vue'),
             name: 'course'
         }

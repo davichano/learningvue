@@ -1,12 +1,19 @@
 <template>
-  <div>
-    Detalle del curso con ID {{ $route.params.courseId }}
-  </div>
+  <main>
+    <h1>
+      {{ course.titles.en }}
+    </h1>
+  </main>
 </template>
 
 <script>
 export default {
-  name: "CourseIndexView"
+  name: "CourseIndexView",
+  data() {
+    return {
+      course: Object.assign({}, JSON.parse(this.$route.params.course))
+    }
+  }
 }
 </script>
 

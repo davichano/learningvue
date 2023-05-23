@@ -2,13 +2,19 @@
 </script>
 
 <template>
-  <div>
-    <router-link :to="{name:'home'}">Home</router-link>
-    <router-link :to="{name:'about'}">About</router-link>
-    <router-link :to="{name:'chats'}">Chat</router-link>
-    <router-link :to="{name:'course',params:{courseId:5}}">Course</router-link>
-  </div>
-  <router-view/>
+  <section>
+    <header>
+      <router-link :to="{name:'home'}">Home</router-link>
+      <router-link :to="{name:'about'}">About</router-link>
+      <router-link :to="{name:'chats'}">Chat</router-link>
+    </header>
+    <section>
+      <router-view/>
+    </section>
+    <footer>
+      Todos los derechos reservados
+    </footer>
+  </section>
 </template>
 
 <style scoped>
