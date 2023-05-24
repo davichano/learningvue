@@ -1,5 +1,7 @@
 <script>
 import CoursePreview from "../components/courses/CoursePreview.vue";
+import {mapStores} from 'pinia'
+import {useCoursesStore} from "../stores/CoursesStore";
 
 export default {
   components: {
@@ -8,20 +10,15 @@ export default {
   data() {
     return {
       username: "",
-      server: "https://kitsu.io/api/edge/trending/anime?limit=9",
-      courses: []
     }
   },
-  mounted() {
-    this.getList();
+  computed: {
+    ...mapStores(useCoursesStore)
   },
-  methods: {
-    getList: async function () {
-      this.courses = await fetch(this.server).then((res) => res.json());
-      this.courses = this.courses.data;
-      console.log(this.courses)
-    }
-  }
+  created() {
+    this.coursesStoreStore.getList();
+  },
+  methods: {}
 }
 </script>
 <template>
@@ -32,7 +29,7 @@ export default {
     </section>
     <section class="courses-list container">
       <div class="row">
-        <div class="col-md-4 mb-3" v-for="course in courses">
+        <div class="col-md-4 mb-3" v-for="course in coursesStoreStore.courses">
           <course-preview
               :image="course.attributes.coverImage.large"
               :description="course.attributes.synopsis"
